@@ -1,0 +1,8 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<h2>{{ gig.title }}</h2>
+<p><strong>₹{{ gig.amount }}</strong></p>
+<p>{{ gig.description }}</p>
+<p>Posted by: {{ gig.created_by.username }}</p>
+<p>Date: {{ gig.date_posted|date:'M d, Y' }}</p>
+{% endblock %}

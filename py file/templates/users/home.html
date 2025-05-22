@@ -1,0 +1,20 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<h2>Available Gigs</h2>
+{% for gig in gigs %}
+    <div class='gig-card'>
+        <h3><a href="{% url 'gig_detail' gig.id %}">{{ gig.title }}</a></h3>
+        <p>{{ gig.description|truncatechars:100 }}</p>
+        <p><strong>₹{{ gig.amount }}</strong></p>
+        <p><small>Posted on {{ gig.date_posted|date:'M d, Y' }}</small></p>
+
+        <a href="{% url 'toggle_favorite' gig.id %}">
+            {% if user in gig.favorited_by.all %}
+                ❤️ Unfavorite
+            {% else %}
+                🤍 Favorite
+    {% endif %}
+    </a>
+    </div>
+{% endfor %}
+{% endblock %}

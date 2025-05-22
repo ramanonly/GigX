@@ -1,0 +1,13 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<h2>Your Posted Gigs</h2>
+{% for gig in gigs %}
+  <div class="gig-card">
+    <h3>{{ gig.title }}</h3>
+    <p>{{ gig.description }}</p>
+    <p>₹{{ gig.amount }}</p>
+  </div>
+{% empty %}
+  <p>You have not posted any gigs.</p>
+{% endfor %}
+{% endblock %}
